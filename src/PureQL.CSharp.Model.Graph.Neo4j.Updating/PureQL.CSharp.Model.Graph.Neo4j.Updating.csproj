@@ -7,11 +7,13 @@
     <IsAotCompatible>true</IsAotCompatible>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <EnablePackageValidation>true</EnablePackageValidation>
+    <PackageValidationBaselineVersion>0.1.0-preview.0.1.0</PackageValidationBaselineVersion>
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>PureQL.CSharp.Model.Graph.Neo4j.Updating</PackageId>
     <RootNamespace>PureQL.CSharp.Model.Graph.Neo4j.Updating</RootNamespace>
     <AssemblyName>PureQL.CSharp.Model.Graph.Neo4j.Updating</AssemblyName>
+    <Description>Replaces a stored PureQL query graph in Neo4j in one transaction.</Description>
     <Authors>Dmitry Kurochkin</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
