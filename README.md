@@ -1,19 +1,26 @@
-# Pure.Template
+# PureQL.CSharp.Model.Graph.Neo4j.Updating
 
-Project template for new **Pure** ecosystem NuGet libraries.
+Replaces a **PureQL** query stored in Neo4j, keeping its id.
 
+[![.NET build & test](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Updating/actions/workflows/build-and-test.yml/badge.svg?branch=main)](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Updating/actions/workflows/build-and-test.yml)
+[![Build and Deploy](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Updating/actions/workflows/publish-nuget.yml/badge.svg?branch=main)](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Updating/actions/workflows/publish-nuget.yml)
+[![NuGet](https://img.shields.io/nuget/v/PureQL.CSharp.Model.Graph.Neo4j.Updating)](https://www.nuget.org/packages/PureQL.CSharp.Model.Graph.Neo4j.Updating)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Overview
 
-`Pure.Template` is the canonical starting point for new Pure ecosystem packages. It ships with a pre-configured project structure, `.editorconfig`, GitHub Actions workflows for build/test and NuGet publish, and standard `CODEOWNERS` and `CODE_OF_CONDUCT.md` files — so a new library can be bootstrapped consistently without manually copying configuration from another repo.
+`PureQL.CSharp.Model.Graph.Neo4j.Updating` is the updating package of the `PureQL.CSharp.Model.Graph` family. It replaces the graph stored under a query's id with the graph of a new query by composing the [Deletion](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Deletion) and [Insertion](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Insertion) packages on one runner.
 
-## What's included
+## Public API
 
-| Item | Description |
+Namespace `PureQL.CSharp.Model.Graph.Neo4j.Updating`:
+
+| Name | Description |
 |------|-------------|
-| `.editorconfig` | Shared code style rules for the Pure ecosystem |
-| `CODEOWNERS` | Default ownership configuration |
-| `CODE_OF_CONDUCT.md` | Contributor code of conduct |
-| `.github/workflows/build-and-test.yml` | CI workflow: restore, build, and test on every push |
-| `.github/workflows/publish-nuget.yml` | Publish workflow: triggered on git tag push |
+| `ReplacedQuery` | `sealed record ReplacedQuery(IAsyncQueryRunner Runner, StoredQuery Query)`; `ApplyAsync` deletes the stored query and writes the new one on a session or transaction you own |
+
+## Installation
+
+```
+dotnet add package PureQL.CSharp.Model.Graph.Neo4j.Updating
+```
