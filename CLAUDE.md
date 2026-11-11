@@ -33,7 +33,7 @@ The enclosing namespace `PureQL.CSharp.Model` has its own `Query` (a subquery), 
 
 **Target framework:** net11.0 only, as the model. `IsAotCompatible` is `true`.
 
-**Package validation:** enabled against `PackageValidationBaselineVersion` `0.1.0-preview.0.1.0`, the first release; the `nuget-publish` skill moves the baseline after each release, and intentional breaks go to `CompatibilitySuppressions.xml` next to the csproj.
+**Package validation:** enabled against `PackageValidationBaselineVersion` `0.1.0-preview.0.2.0`, the latest release; the `nuget-publish` skill moves the baseline after each release, and intentional breaks go to `CompatibilitySuppressions.xml` next to the csproj.
 
 **Mutation testing:** the Stryker step of CI is commented out.
 
