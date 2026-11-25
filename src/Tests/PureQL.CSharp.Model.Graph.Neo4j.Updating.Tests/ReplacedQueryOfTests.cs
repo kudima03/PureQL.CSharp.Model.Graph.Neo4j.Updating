@@ -3,6 +3,7 @@ using PureQL.CSharp.Model.Graph.Neo4j.Abstractions;
 using PureQL.CSharp.Model.Graph.Neo4j.Insertion;
 using PureQL.CSharp.Model.Samples.Queries.Dashboards;
 using PureQL.CSharp.Model.Samples.Queries.Joins;
+using PureQL.CSharp.Model.Samples.Queries.Subqueries;
 
 namespace PureQL.CSharp.Model.Graph.Neo4j.Updating.Tests;
 
@@ -16,7 +17,7 @@ public sealed class ReplacedQueryOfTests(Neo4jFixture neo4j)
     [Fact]
     public async Task ReplacesTheStoredQuery()
     {
-        StoredQuery old = await StoredAsync(new InnerJoinQuery().Value);
+        StoredQuery old = await StoredAsync(new InlineStatusRowsQuery().Value);
         StoredQuery replacement = old with
         {
             Query = new ProductSalesPerformanceQuery().Value,

@@ -56,7 +56,7 @@ await session.ExecuteWriteAsync(
 
 `ReplacedQuery` runs two statements on its runner, in order:
 
-1. [`DeletedQuery`](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Deletion)`(Runner, Query.Id)` — `MATCH (n:Node {queryId: $id}) DETACH DELETE n` removes every node of the stored graph and every relationship attached to them.
+1. [`DeletedQuery`](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Deletion)`(Runner, Query.Id)` — `MATCH (n:Node {queryId: $id}) DETACH DELETE n` removes every node of the stored graph (the `List` nodes of inline rows included: every node carries `queryId`) and every relationship attached to them.
 2. [`InsertedQuery`](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Insertion)`(Runner, Query)` — writes the graph of the new query under the same id in one statement.
 
 The query keeps its id, so the `Query.id` uniqueness constraint (`pureql_query_id`, created by the Creation package) is never hit: the old root is deleted before the new one is written.
@@ -80,11 +80,13 @@ The query keeps its id, so the `Query.id` uniqueness constraint (`pureql_query_i
 
 ## Dependencies
 
-- [`PureQL.CSharp.Model.Graph.Neo4j.Deletion`](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Deletion) `0.1.0-preview.0.2.0` — `DeletedQuery`
-- [`PureQL.CSharp.Model.Graph.Neo4j.Insertion`](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Insertion) `0.1.0-preview.0.2.0` — `InsertedQuery`
-- [`PureQL.CSharp.Model.Graph`](https://github.com/kudima03/PureQL.CSharp.Model.Graph) `0.1.0-preview.1.1.0` — `QueryGraphs`, `GraphMappingException`
-- [`PureQL.CSharp.Model.Graph.Neo4j.Abstractions`](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Abstractions) `0.1.0-preview.1.1.0` — `INeo4jStoredQueries`, `StoredQuery`
+- [`PureQL.CSharp.Model.Graph.Neo4j.Deletion`](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Deletion) `0.1.0-preview.1.0.0` — `DeletedQuery`
+- [`PureQL.CSharp.Model.Graph.Neo4j.Insertion`](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Insertion) `0.1.0-preview.1.0.0` — `InsertedQuery`
+- [`PureQL.CSharp.Model.Graph`](https://github.com/kudima03/PureQL.CSharp.Model.Graph) `0.1.0-preview.2.0.0` — `QueryGraphs`, `GraphMappingException`
+- [`PureQL.CSharp.Model.Graph.Neo4j.Abstractions`](https://github.com/kudima03/PureQL.CSharp.Model.Graph.Neo4j.Abstractions) `0.1.0-preview.2.0.0` — `INeo4jStoredQueries`, `StoredQuery`
 - [`Neo4j.Driver`](https://www.nuget.org/packages/Neo4j.Driver) `6.5.1`
+
+All four PureQL packages are on [`PureQL.CSharp.Model`](https://github.com/kudima03/PureQL.CSharp.Model) `0.1.0-preview.15.0.0` (PureQL specification `0.1.0-preview.3.0.0`). Graphs written by an earlier version are not read back by the Graph package: drop them and insert the queries again.
 
 ## Target Frameworks
 
