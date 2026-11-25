@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+Follows `PureQL.CSharp.Model` `0.1.0-preview.15.0.0` (PureQL specification
+`0.1.0-preview.3.0.0`). The public API is unchanged. Graphs written by an earlier
+version are not read back: drop them and insert the queries again.
+
+### Changed
+
+- **Breaking:** depends on `PureQL.CSharp.Model.Graph.Neo4j.Insertion` and
+  `PureQL.CSharp.Model.Graph.Neo4j.Deletion` `0.1.0-preview.1.0.0`,
+  `PureQL.CSharp.Model.Graph` and `PureQL.CSharp.Model.Graph.Neo4j.Abstractions`
+  `0.1.0-preview.2.0.0`, all on `PureQL.CSharp.Model` `0.1.0-preview.15.0.0`.
+  Replacing a query drops every node of the stored graph, the `List` nodes of inline
+  rows included, and writes the graph of the new one.
+- Tested with every query of `PureQL.CSharp.Model.Samples` `0.1.0-preview.4.0.0` (151,
+  combined, window, inline-rows and recursive queries included), both as the query
+  replaced and as its replacement, and read back through
+  `PureQL.CSharp.Model.Serialization` `0.1.0-preview.7.0.0`.
+
 ## [0.1.0-preview.0.2.0] - 2026-11-11
 
 ### Added
